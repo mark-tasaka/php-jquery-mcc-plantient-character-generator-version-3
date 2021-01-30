@@ -6,14 +6,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 	<meta charset="UTF-8">
-	<meta name="description" content="Mutant Crawl Classics manimal Character Generator. Goblinoid Games.">
+	<meta name="description" content="Mutant Crawl Classics plantient Character Generator. Goblinoid Games.">
 	<meta name="keywords" content="Mutant Crawl Classics, Goblinoid Games,HTML5,CSS,JavaScript">
 	<meta name="author" content="Mark Tasaka 2021">
     
     <link rel="icon" href="../../../images/favicon/favicon.png" type="image/png" sizes="16x16"> 
 		
 
-	<link rel="stylesheet" type="text/css" href="css/manimal.css">
+	<link rel="stylesheet" type="text/css" href="css/plantient.css">
     
     
     <script type="text/javascript" src="./js/modifiers.js"></script>
@@ -44,7 +44,6 @@
     include 'php/profession.php';
     include 'php/zeroLevelMutantAppearance.php';
     include 'php/physicalMutations.php';
-    include 'php/mentalMutations.php';
     include 'php/defectsMutation.php';
     include 'php/mutantationStatAdjustment.php';
     include 'php/mutationCheckMiniums.php';
@@ -180,13 +179,6 @@
 
         shuffle($physicalMutationArray);
 
-        
-        $mentalMutationArray = array();
-
-        for($m = 0; $m < 26; ++$m)
-        {
-            array_push($mentalMutationArray, $m);
-        }
 
         
         $defectMutationArray = array();
@@ -196,20 +188,12 @@
             array_push($defectMutationArray, $m);
         }
 
-        shuffle($mentalMutationArray);
 
         if(isset($_POST["thePhysicalMutuation"]))
         {
             $physicalMutationString = $_POST["thePhysicalMutuation"];
             //casting not necessary with php (it's good practice)
             $physicalMutationTotal = (int)$physicalMutationString;
-        }
-        
-        if(isset($_POST["theMentalMutuation"]))
-        {
-            $mentalMutationString = $_POST["theMentalMutuation"];
-            //casting not necessary with php (it's good practice)
-            $mentalMutationTotal = (int)$mentalMutationString;
         }
 
          
@@ -222,17 +206,14 @@
 
         if(isset($_POST['theRandomMutuations']) && $_POST['theRandomMutuations'] == 1) 
         {
-            $dieRollPhysicalMutations = rand(1, 2);
+            $dieRollPhysicalMutations = rand(1, 3);
             $physicalMutationTotal = $dieRollPhysicalMutations;
-
-            $dieRollMentalMutations = 1;
-            $mentalMutationTotal = $dieRollMentalMutations;
 
             $defectMutationTotal = 0;
         } 
 
         $characterPhysicalMutations = array();
-        $characterMentalMutations = array();
+        $characterPhysicalMutations2 = array();
         $characterDefectMutations = array();
 
         //Mutation/Defect Adjustments
@@ -302,57 +283,17 @@
 
             $mutation = 'Mutation: ' . $mutationName . ' (' . $mutationType . ')<br/><br/>Manifestation: ' . $mutationManifest  . '<br/><br/>Effect: ' . $mutationEffect;
 
-            array_push($characterPhysicalMutations, $mutation);
-        }
-
-        
-        for($k = 0; $k < $mentalMutationTotal; ++$k)
-        {
-            $mutationNumber = $mentalMutationArray[$k];
-
-            $mutationName = getMentalMutationName($mutationNumber);
-            $mutationType = getMentalMutationType($mutationNumber);
-            $mutationManifest = getMentalMutationManifestation($mutationNumber);
-
-            if($mutationNumber <= 22)
+            if($k < 7)
             {
-                $mutationEffect = "A mutation check roll each time the active mutation is used.";
+                array_push($characterPhysicalMutations, $mutation);
             }
             else
             {
-                $dieRoll = rand(0, 5);
-
-                $mutationEffect = getMentalMutationEffect($mutationNumber, $dieRoll);
-
-                $mutantAdjustmentArray = getMentalMutationAdjustments($mutationNumber, $dieRoll);
-
-                //Mutation/Defect Adjustments
-                //0-4
-                $mutantStrAdj += $mutantAdjustmentArray[0];
-                $mutantAgiAdj += $mutantAdjustmentArray[1];
-                $mutantStaAdj += $mutantAdjustmentArray[2];
-                $mutantPerAdj += $mutantAdjustmentArray[3];
-                $mutantIntAdj += $mutantAdjustmentArray[4];
-                //5 - 7
-                $mutantACAdj += $mutantAdjustmentArray[5];
-                $mutantInitAdj += $mutantAdjustmentArray[6];
-                $mutantActionDieAdj += $mutantAdjustmentArray[7];
-                //8-9
-                $mutantMeleeAdj += $mutantAdjustmentArray[8];
-                $mutantMissileAdj += $mutantAdjustmentArray[9];
-                //10-12
-                $mutantRefAdj += $mutantAdjustmentArray[10];
-                $mutantFortAdj += $mutantAdjustmentArray[11];
-                $mutantWillAdj += $mutantAdjustmentArray[12];
-                //13
-                $mutantSpeedAdj += $mutantAdjustmentArray[13];
+                array_push($characterPhysicalMutations2, $mutation);
 
             }
-
-            $mutation = 'Mutation: ' . $mutationName . ' (' . $mutationType . ')<br/><br/>Manifestation: ' . $mutationManifest . '<br/><br/>Effect: ' . $mutationEffect;
-
-            array_push($characterMentalMutations, $mutation);
         }
+
 
                 
         for($k = 0; $k < $defectMutationTotal; ++$k)
@@ -568,7 +509,7 @@
 
        $totalAcDefense = $armourACBonus + $shieldACBonus + $totalArtifactAC;
 
-       $speed = 30 + $mutantSpeedAdj;
+       $speed = 20 + $mutantSpeedAdj;
 
        $speed = speedCheckMin($speed);
 
@@ -685,10 +626,10 @@
 
     $profession = getProfession();
 
-    $zeroLvMutantAppearance = getManimalAppearance();
+    $zeroLvMutantAppearance = getPlantientAppearance();
 
-    
-    
+    $hideGreenery = hideInGreenery($level);
+
     ?>
 
     
@@ -751,7 +692,7 @@
         <span id="maxTech"></span>
 
        
-       <span id="class">Manimal</span>
+       <span id="class">Plantient</span>
        
        <span id="armourClass"></span>
 
@@ -932,6 +873,13 @@
             ?>
         </span>
 
+        
+        <span id="hideGreenery">
+            <?php
+                echo $hideGreenery;
+            ?>
+        </span>
+
 
 
         
@@ -956,18 +904,20 @@
            
            ?>  
         </span>
-        
-        <span id="characterMentalMutations">
+
+        <span id="characterPhysicalMutations2">
         <?php
-           
-           foreach($characterMentalMutations as $theMMutations)
+
+           foreach($characterPhysicalMutations2 as $thePMutations2)
            {
-               echo $theMMutations;
+               echo $thePMutations2;
                echo "<br/>----------------------------------------------------------<br/>";
            }
            
+           
            ?>  
         </span>
+
         
 
         <span id="characterDefectMutations">
@@ -1085,7 +1035,7 @@
 
 	  
 	/*
-	 Character() - Manimal Character Constructor
+	 Character() - plantient Character Constructor
 	*/
 	function Character() {
         
@@ -1151,7 +1101,7 @@
 
 
   
-       let imgData = "images/manimal.png";
+       let imgData = "images/plantient.png";
       
         $("#character_sheet").attr("src", imgData);
       

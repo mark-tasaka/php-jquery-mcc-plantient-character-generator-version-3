@@ -1,6 +1,6 @@
 <?php
 
-/*Manimal*/
+/*Plantient*/
 
 function savingThrowReflex($level)
 {
@@ -89,7 +89,11 @@ function savingThrowWill($level)
 
 function attackBonus($level)
 {
-  if($level == 1 || $level == 2)
+  if($level == 1)
+  {
+    $attackBonus = 0;
+  }
+  else if($level == 2)
   {
     $attackBonus = 1;
   }
@@ -97,17 +101,25 @@ function attackBonus($level)
   {
     $attackBonus = 2;
   }
-  else if($level == 5 || $level == 6)
+  else if($level == 5)
   {
     $attackBonus = 3;
   }
-  else if($level == 7 || $level == 8)
+  else if($level == 6)
   {
     $attackBonus = 4;
   }
-  else
+  else if($level == 7 || $level == 8)
   {
     $attackBonus = 5;
+  }
+  else if($level == 9)
+  {
+    $attackBonus = 6;
+  }
+  else
+  {
+    $attackBonus = 7;
   }
 
   return $attackBonus;
@@ -231,36 +243,51 @@ function criticalDie($level)
 {
     $critical = "";
 
-    if($level == 1)
+    switch($level)
     {
-        $critical = "1d6/II";
-    }
-
-    if($level == 2 || $level == 3)
-    {
-      $critical = "1d8/II";
-    }
-
-    if($level == 4 || $level == 5)
-    {
-      $critical = "1d10/II";
-    }
-
-    if($level == 6 || $level == 7)
-    {
-      $critical = "1d12/III";
-    }
-
-    if($level == 8 || $level == 9)
-    {
-      $critical = "1d14/III";
-    }
-
-    if($level == 10)
-    {
+      case 1:
+        $critical = "1d10/III";
+        break;
+        
+      case 2:
+        $critical = "1d12/III";
+        break;
+        
+      case 3:
+        $critical = "1d14/III";
+        break;
+        
+      case 4:
         $critical = "1d16/III";
-    }
+        break;
+        
+      case 5:
+        $critical = "1d20/III";
+        break;
+        
+      case 6:
+        $critical = "1d24/III";
+        break;
+        
+      case 7:
+        $critical = "1d30/III";
+        break;
+        
+      case 8:
+        $critical = "1d30+2/III";
+        break;
+        
+      case 9:
+        $critical = "1d30+4/III";
+        break;
+        
+      case 10:
+        $critical = "1d30+6/III";
+        break;
 
+        default:
+        $critical = "99999";
+    }
 
     return $critical;
 
@@ -272,27 +299,27 @@ function title($level)
 
         if($level == 1)
         {
-            $title = "Omega Club";
+            $title = "Sprout";
         }
         else if($level == 2)
         {
-            $title = "Theta Soldier";
+            $title = "Caretaker";
         }
         else if($level == 3)
         {
-            $title = "Gamma Trooper";
+            $title = "Greenskeeper";
         }
         else if($level == 4)
         {
-            $title = "Beta Commander";
+            $title = "Cultivator";
         }
         else if($level == 5)
         {
-            $title = "Alpha Leader";
+            $title = "Warden";
         }
         else
         {
-            $title = "Alpha Pack Leader";
+            $title = "High Warden";
         }
 
 return $title;
@@ -306,7 +333,7 @@ function getArtifactCheckBonus($level)
     switch ($level) 
     {
         case 1:
-            $bonus = 0;
+            $bonus = -1;
           break;
           
         case 2:
@@ -314,7 +341,7 @@ function getArtifactCheckBonus($level)
           break;
           
         case 3:
-            $bonus = 1;
+            $bonus = 0;
           break;
 
         case 4:
@@ -322,27 +349,27 @@ function getArtifactCheckBonus($level)
           break;
           
         case 5:
-            $bonus = 2;
+            $bonus = 1;
           break;
           
         case 6:
-            $bonus = 3;
+            $bonus = 2;
           break;
 
           case 7:
-            $bonus = 4;
+            $bonus = 3;
           break;
           
         case 8:
-            $bonus = 5;
+            $bonus = 4;
           break;
           
         case 9:
-            $bonus = 6;
+            $bonus = 5;
           break;
           
         case 10:
-            $bonus = 7;
+            $bonus = 6;
           break;
           
         default:
@@ -350,6 +377,60 @@ function getArtifactCheckBonus($level)
       } 
 
     return $bonus;
+}
+
+function hideInGreenery($level)
+{
+  $hide = "";
+
+switch ($level) 
+{
+    case 1:
+        $hide = "50%";
+      break;
+      
+    case 2:
+        $hide = "55%";
+      break;
+      
+    case 3:
+        $hide = "60%";
+      break;
+
+    case 4:
+        $hide = "65%";
+      break;
+      
+    case 5:
+        $hide = "70%";
+      break;
+      
+    case 6:
+        $hide = "75%";
+      break;
+
+      case 7:
+        $hide = "80%";
+      break;
+      
+    case 8:
+        $hide = "85%";
+      break;
+      
+    case 9:
+        $hide = "90%";
+      break;
+      
+    case 10:
+        $hide = "95%";
+      break;
+      
+    default:
+        $hide = "10%";
+  } 
+
+return $hide;
+
 }
 
 

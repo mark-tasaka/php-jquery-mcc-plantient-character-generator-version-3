@@ -367,6 +367,13 @@ body{
     font-size: 1em;
 }
 
+#hideGreenery{
+    position:absolute;
+    top: 510px;
+    left: 830px;
+    font-size: 1em;
+}
+
 #initiative{
     position:absolute;
     top: 395px;
@@ -377,7 +384,7 @@ body{
 
 #zeroLvMutantAppearance{
     position:absolute;
-    top: 870px;
+    top: 910px;
     left: 690px;
     font-size: 0.8em;
     width: 240px;
@@ -612,7 +619,7 @@ body{
 }
 
 
-#characterMentalMutations
+#characterPhysicalMutations2
 {
     position: absolute;
     top: 1360px;

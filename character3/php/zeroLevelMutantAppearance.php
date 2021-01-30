@@ -1,51 +1,54 @@
 <?php
 
-function manimalAppearance()
+function plantientAppearance()
 {
-    $appearance = array("Primate: gorilla",
-"Primate: chimpanzee",
-"Primate: orangutan",
-"Primate: gibbon",
-"Canine: dog",
-"Canine: wolf",
-"Canine: coyote",
-"Canine: fox",
-"Feline: lion",
-"Feline: tiger",
-"Feline: cheetah",
-"Feline: panther",
-"Ursine: brown bear",
-"Ursine: grizzly bear",
-"Ursine: polar bear",
-"Bovine: cow",
-"Bovine: bison",
-"Bovine: buffalo",
-"Bovine: antelope",
-"Bovine: yak",
-"Suidae: pig",
-"Suidae: hog",
-"Suidae: wartog",
-"Rodentia: mouse",
-"Rodentia: rat",
-"Rodentia: squirrel",
-"Rodentia: porcupine",
-"Rodentia: beaver",
-"Rodentia: rabbit",
-"Amphibia: frog",
-"Amphibia: toad",
-"Amphibia: salamander",
-"Avian: hawk",
-"Avian: eagle",
-"Avian: crow",
-"Avian: owl",
-"Avian: vulture",
-"Avian: seagull",
-"Insecta: roach",
-"Insecta: ant",
-"Insecta: fly",
-"Insecta: grasshopper",
-"Insecta: beetle",
-"Insecta: moth");
+    $appearance = array("Decisuous: maple",
+        "Decisuous: oak",
+        "Decisuous: sycamore",
+        "Decisuous: buckeye",
+        "Decisuous: chestnut",
+        "Conifer: cedar",
+        "Conifer: larch",
+        "Conifer: fir",
+        "Conifer: pine",
+        "Conifer: spruce]",
+        "Conifer: yew",
+        "Fruit-Bearing: apple",
+        "Fruit-Bearing: pear",
+        "Fruit-Bearing: peach",
+        "Fruit-Bearing: cherry",
+        "Fruit-Bearing: plum",
+        "Fruit-Bearing: banana",
+        "Fern: horsetail",
+        "Fern: whisk fern",
+        "Fern: marratoid",
+        "Vine: ivy",
+        "Vine: honeysuckle",
+        "Vine: arrowroot",
+        "Vine: morning glory",
+        "Vine: grape",
+        "Vine: sweet pea",
+        "Shrub: sagebrush",
+        "Shrub: hibiscus",
+        "Shrub: blackberry",
+        "Shrub: huckleberry",
+        "Shrub: sumac",
+        "Shrub: yucca",
+        "Tropical: palm",
+        "Tropical: coconut",
+        "Tropical: bamboo",
+        "Tropical: teak",
+        "Cacti: barrel",
+        "Cacti: beavertail",
+        "Cacti: aloe",
+        "Cacti: prickly pear",
+        "Mosses: green moss",
+        "Mosses: liverwort",
+        "Mosses: hornwort",
+        "Fungi: mushroom",
+        "Fungi: toadstool",
+        "Fungi: fungus",
+        "Fungi: mold");
 
         shuffle($appearance);
 
@@ -123,17 +126,17 @@ function mutantAppearance()
 }
 
 
-function getManimalAppearance()
+function getPlantientAppearance()
 {
     $dieRoll = rand(0, 29);
 
-    if($dieRoll < 26)
+    if($dieRoll < 28)
     {
-        $appearance = manimalAppearance();
+        $appearance = plantientAppearance();
     }
     else
     {
-        $manimalAppearance = manimalAppearance();
+        $manimalAppearance = plantientAppearance();
         $mutantAppearance = mutantAppearance();
         $appearance = $manimalAppearance . '<br/>' . $mutantAppearance;
     }
