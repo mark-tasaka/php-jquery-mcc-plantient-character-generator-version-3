@@ -5,6 +5,14 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Plantient Character Gene
 --------------------------
 
 
+
+Update 1.01: 2021-01-30
+
+Updates to mccPlantient.php, plantient.css, hitPoinst.js, classDetails.php and zeroLevelMutantAppearance.php.
+
+
+
+
 Initial commit: 2021-01-29
 
 The initial commit for the Mutant Crawl Classics Plantient Character Generator Version 3.
