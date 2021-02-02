@@ -4,6 +4,19 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Plantient Character Gene
 
 --------------------------
 
+Live version of the Mutant Crawl Classics (MCC) Plantient Character Generator Version 3 is found at:
+
+Artifacts of the Ancient Ones: A Mutant Crawl Classics Fan Site
+
+https://www.oldschooladventures.org/mcc/classes/plantient/
+
+
+--------------------------
+
+
+Update 1.02: 2021-02-02
+
+MCC Plantient Generator Launch Page has been added.
 
 
 Update 1.01: 2021-01-30
